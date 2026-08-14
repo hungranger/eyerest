@@ -1,0 +1,19 @@
+# Eye Rest
+
+> A calm, hand-painted macOS menu-bar app that enforces the 20-20-20 eye-rest rule with full-screen painterly break scenes. Free to start; Pro is a one-time $14.99 (no subscription), macOS 14+.
+
+Eye Rest reminds knowledge workers to rest their eyes on the 20-20-20 rule and turns each break into a hand-painted scene they'll actually take. Differentiator: beauty drives adherence — unlike utilitarian break apps (LookAway, Time Out, Stretchly) that get uninstalled.
+
+## Core
+- [Product](https://eyerest.app/okf/product.md): what Eye Rest is and does
+- [Features](https://eyerest.app/okf/features.md): timer, 6 scenes, smart pause, nudges, stats
+- [Pricing](https://eyerest.app/okf/pricing.md): free tier + $14.99 one-time Pro, 14-day trial
+- [FAQ](https://eyerest.app/okf/faq.md): common questions
+
+## Positioning
+- [Positioning](https://eyerest.app/okf/positioning.md): beauty drives adherence
+- [Audience](https://eyerest.app/okf/audience.md): Mac knowledge workers with eye strain
+- [Eye Rest vs alternatives](https://eyerest.app/okf/competitors.md): vs LookAway, Time Out, Stretchly, f.lux
+
+## Knowledge bundle
+- [OKF bundle index](https://eyerest.app/okf/index.md): full agent-readable content bundle
