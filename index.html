@@ -123,6 +123,10 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;width:10
 .mb-art{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);max-width:420px;justify-self:center;border:1px solid var(--line)}
 .mb-art img{width:100%;display:block}
 @media (max-width:820px){.split{grid-template-columns:1fr}}
+/* framed break-scene window (used in the bottom closer) */
+.window{position:relative;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:3024/1964;transform:rotate(-1.3deg);border:1px solid var(--line)}
+.window::after{content:"";position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),inset 0 0 90px rgba(0,0,0,.34)}
+.window img{width:100%;height:100%;object-fit:cover;display:block}
 /* steps: vertical, verb-led, sparse hairlines */
 .steps{max-width:720px}
 .step{display:grid;grid-template-columns:1fr;gap:.3rem;padding:34px 0;border-top:1px solid var(--line)}
@@ -178,8 +182,8 @@ footer a{color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--a
   <canvas id="flies" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <span class="eyebrow up">A calmer 20-20-20 for macOS</span>
-    <h1><span class="line"><span>Give your eyes</span></span><span class="line"><span>something to</span></span><span class="line"><span class="it">look forward to.</span></span></h1>
-    <p class="lead up u1">Your next break is twenty minutes away. Make it a good one.</p>
+    <h1><span class="line"><span>The eye-rest app</span></span><span class="line"><span>you'll actually</span></span><span class="line"><span class="it">look forward to.</span></span></h1>
+    <p class="lead up u1">Every twenty minutes, your Mac becomes a hand-painted scene. Rest your eyes, gladly.</p>
     <div class="cta-row up u2">
       <a class="btn primary big" href="https://github.com/hungranger/eyerest/releases/download/v1.0/EyeRest-1.0.dmg" target="_blank" rel="noopener">Download for Mac</a>
       <a class="btn ghost big" href="https://hungranger.gumroad.com/l/tdveoa" target="_blank" rel="noopener">Buy a license</a>
@@ -265,13 +269,16 @@ footer a{color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--a
   <details><summary>What do I need to run it?<span class="plus">+</span></summary><p class="a">macOS 14 or later. Eye Rest runs quietly in your menu bar, with no dock icon and no window. There is no iOS, Windows, or web version yet.</p></details>
 </div></section>
 
-<section class="final"><div class="wrap reveal">
-  <h2 style="max-width:18ch">The eye-rest app you'll actually look forward to.</h2>
-  <p class="lead">Every twenty minutes, your Mac becomes a hand-painted scene. Rest your eyes, gladly.</p>
-  <div class="cta-row">
-    <a class="btn primary big" href="https://github.com/hungranger/eyerest/releases/download/v1.0/EyeRest-1.0.dmg" target="_blank" rel="noopener">Download for Mac</a>
-    <a class="btn ghost big" href="https://hungranger.gumroad.com/l/tdveoa" target="_blank" rel="noopener">Buy a license</a>
+<section class="tint"><div class="wrap split reveal">
+  <div>
+    <h2 style="max-width:13ch">Give your eyes something to look forward to.</h2>
+    <p class="body" style="margin-top:1.4rem">Your next break is twenty minutes away. Make it a good one.</p>
+    <div class="cta-row" style="margin-top:2rem">
+      <a class="btn primary big" href="https://github.com/hungranger/eyerest/releases/download/v1.0/EyeRest-1.0.dmg" target="_blank" rel="noopener">Download for Mac</a>
+      <a class="btn ghost big" href="https://hungranger.gumroad.com/l/tdveoa" target="_blank" rel="noopener">Buy a license</a>
+    </div>
   </div>
+  <div class="window"><img src="img/break-dusk.jpg" alt="An Eye Rest break: a hand-painted dusk landscape with a soft breathing-ring countdown and the words take a slow breath"></div>
 </div></section>
 </main>
 
