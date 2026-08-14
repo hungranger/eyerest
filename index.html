@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eye Rest, a hand-painted eye-rest app for Mac</title>
-<meta name="description" content="Eye Rest reminds you to rest your eyes with the 20-20-20 rule, and turns every break into a hand-painted scene you'll actually look forward to. Free to start, 14.99 dollars once, macOS.">
+<meta name="description" content="Eye Rest reminds you to rest your eyes with the 20-20-20 rule, and turns every break into a hand-painted scene you'll actually look forward to. Free to start, $14.99 once, macOS.">
 <meta property="og:title" content="Eye Rest, the eye-rest app you'll actually look forward to">
 <meta property="og:description" content="20-20-20 breaks that fade your Mac into a hand-painted scene. Free to start, macOS.">
 <meta property="og:image" content="img/break-dusk.jpg">
@@ -69,14 +69,17 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;width:10
 .btn.ghost:hover{transform:translateY(-3px);border-color:var(--accent);color:var(--accent)}
 .btn.big{padding:1.05rem 2rem;font-size:1.04rem}
 .cta-row{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
-/* HERO */
-.hero{min-height:100dvh;display:flex;align-items:center;padding-top:96px;padding-bottom:64px;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:
-   radial-gradient(80% 60% at 82% 18%,rgba(230,179,87,.16),transparent 60%),
-   radial-gradient(70% 60% at 8% 96%,rgba(58,82,110,.22),transparent 62%),
-   linear-gradient(180deg,var(--bg),#0c0f17)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,68px);align-items:center;width:100%}
+/* HERO (immersive full-bleed painted scene) */
+.hero{position:relative;min-height:100dvh;display:grid;place-items:center;text-align:center;
+  padding:118px clamp(22px,5vw,56px) 84px;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background-image:url("img/real-night.jpg");
+  background-size:cover;background-position:center;transform:scale(1.06)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+   radial-gradient(78% 60% at 50% 44%,rgba(9,11,17,.22),transparent 72%),
+   linear-gradient(rgba(9,11,17,.48),rgba(9,11,17,.56) 45%,rgba(9,11,17,.82))}
+#flies{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:840px;width:100%}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4.1rem);text-shadow:0 2px 34px rgba(0,0,0,.55)}
 .hero h1 .line{display:block;overflow:hidden;padding-bottom:.02em}
 .hero h1 .line>span{display:block;transform:translateY(110%);animation:rise 1.05s var(--ease) forwards}
 .hero h1 .line:nth-child(2)>span{animation-delay:.09s}
@@ -85,14 +88,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;width:10
 .up{opacity:0;transform:translateY(18px);animation:up .9s var(--ease) forwards}
 .u1{animation-delay:.5s}.u2{animation-delay:.66s}
 @keyframes up{to{opacity:1;transform:none}}
-.hero .lead{margin:1.8rem 0 2.2rem;max-width:32ch}
-.window{position:relative;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:3024/1964;
-  opacity:0;transform:translateY(22px) rotate(-1.3deg);animation:win 1.2s var(--ease) .35s forwards}
-@keyframes win{to{opacity:1;transform:rotate(-1.3deg)}}
-.window::after{content:"";position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),inset 0 0 100px rgba(0,0,0,.35)}
-.window img{width:100%;height:100%;object-fit:cover;display:block}
-#flies{position:absolute;inset:0;z-index:2;pointer-events:none}
-@media (max-width:880px){.hero-grid{grid-template-columns:1fr}.window{max-width:560px;margin-top:8px}}
+.hero .lead{margin:1.9rem auto 2.3rem;max-width:34ch;color:#f1e9d8;opacity:.94;text-shadow:0 1px 18px rgba(0,0,0,.6)}
+.hero .cta-row{justify-content:center}
 /* reveal */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
@@ -101,8 +98,9 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;width:10
 .measure{max-width:20ch}
 .editorial h2{max-width:16ch}
 .editorial .body{margin-top:1.6rem}
-.editorial.right{text-align:right;display:flex;flex-direction:column;align-items:flex-end}
-.editorial.right .body{text-align:right}
+.editorial.center{text-align:center;display:flex;flex-direction:column;align-items:center}
+.editorial.center h2{max-width:20ch}
+.editorial.center .body{margin-left:auto;margin-right:auto}
 /* scene gallery */
 .gal-head{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap;margin-bottom:46px}
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -154,10 +152,8 @@ summary .plus{color:var(--accent);font-family:var(--sans);font-weight:400;font-s
 details[open] summary .plus{transform:rotate(45deg)}
 details .a{margin-top:1rem;max-width:64ch}
 /* final */
-.final{position:relative;text-align:center;overflow:hidden;padding:clamp(110px,17vw,210px) 0}
-.final::before{content:"";position:absolute;inset:0;z-index:-2;background-image:url("img/real-night.jpg");
-  background-size:cover;background-position:center;transform:scale(1.06)}
-.final::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(11,13,20,.72),rgba(11,13,20,.82))}
+.final{position:relative;text-align:center;overflow:hidden;padding:clamp(104px,15vw,176px) 0;
+  background:radial-gradient(58% 90% at 50% 6%,rgba(230,179,87,.11),transparent 62%),var(--bg)}
 .final h2{margin:0 auto}.final .lead{margin:1.3rem auto 2.2rem;max-width:34ch}
 .final .cta-row{justify-content:center}
 footer{background:#0b0d14;padding:44px 0;font-size:.92rem;color:var(--faint)}
@@ -165,8 +161,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 footer a{color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .hero h1 .line>span,.up,.window{opacity:1;transform:none}
-  .window{transform:rotate(-1.3deg)}
+  .hero h1 .line>span,.up{opacity:1;transform:none}
   .reveal{opacity:1;transform:none}
 }
 </style>
@@ -179,8 +174,9 @@ footer a{color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--a
 </div></nav>
 
 <main id="main">
-<header class="hero"><div class="wrap hero-grid">
-  <div>
+<header class="hero">
+  <canvas id="flies" aria-hidden="true"></canvas>
+  <div class="hero-inner">
     <span class="eyebrow up">A calmer 20-20-20 for macOS</span>
     <h1><span class="line"><span>The eye-rest app</span></span><span class="line"><span>you'll actually</span></span><span class="line"><span class="it">look forward to.</span></span></h1>
     <p class="lead up u1">Every twenty minutes, your Mac becomes a hand-painted scene. Rest your eyes, gladly.</p>
@@ -189,18 +185,14 @@ footer a{color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--a
       <a class="btn ghost big" href="https://hungranger.gumroad.com/l/tdveoa" target="_blank" rel="noopener">Buy a license</a>
     </div>
   </div>
-  <div class="window">
-    <img src="img/break-dusk.jpg" alt="An Eye Rest break in progress: a hand-painted dusk landscape with a soft breathing-ring countdown and the words take a slow breath">
-    <canvas id="flies"></canvas>
-  </div>
-</div></header>
+</header>
 
 <section><div class="wrap reveal editorial">
   <h2>You know the rule.<br>You never do it.</h2>
   <p class="body">Every 20 minutes, look 20 feet away for 20 seconds. Simple, and impossible to remember when you're deep in work, so your eyes end the day dry and aching. You have tried a reminder app before, then turned it off within a week, because it interrupted you with an ugly pop-up at the worst moment.</p>
 </div></section>
 
-<section class="tint"><div class="wrap reveal editorial right">
+<section class="tint"><div class="wrap reveal editorial center">
   <h2>What if the break was the best part of your hour?</h2>
   <p class="body">Eye Rest reminds you to look away, then gives you something worth looking at. Your screen does not flash a warning. It fades into a full-screen painting, alive with quiet motion. Twenty seconds later you return, eyes rested and a little calmer. A break you enjoy is a break you keep taking.</p>
 </div></section>
@@ -228,7 +220,7 @@ footer a{color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--a
     <div class="item"><h3>Gentle, never alarming</h3><p>A soft prompt to blink, a quiet cue for posture, a breathing ring to pace the pause.</p></div>
     <div class="item"><h3>See the habit grow</h3><p>Streaks, screen time, and a seven-day chart, so you can watch it stick.</p></div>
     <div class="item"><h3>Native and light</h3><p>Built in SwiftUI, lives in your menu bar. No Electron, no bloat.</p></div>
-    <div class="item"><h3>Yours to keep</h3><p>One payment of 14.99 dollars. No subscription, ever.</p></div>
+    <div class="item"><h3>Yours to keep</h3><p>One payment of $14.99. No subscription, ever.</p></div>
   </div>
 </div></section>
 
@@ -251,7 +243,7 @@ footer a{color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--a
 
 <section id="get"><div class="wrap reveal">
   <span class="eyebrow">Pricing</span>
-  <h2 style="max-width:15ch;margin-bottom:2rem">Free to start. 14.99 dollars to keep it forever.</h2>
+  <h2 style="max-width:15ch;margin-bottom:2rem">Free to start. $14.99 to keep it forever.</h2>
   <div class="plans">
     <div class="free"><p class="tag">Free</p><div class="amt">Free</div>
       <ul><li><b>20-20-20 menu-bar timer</b></li><li>One time-of-day scene</li><li>Idle pause</li></ul></div>
@@ -267,7 +259,7 @@ footer a{color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--a
 
 <section class="faq"><div class="wrap reveal" style="max-width:800px">
   <h2 style="max-width:14ch;margin-bottom:1.6rem">Questions you're probably asking.</h2>
-  <details open><summary>Why pay when Stretchly is free?<span class="plus">+</span></summary><p class="a">Free break apps get uninstalled, because using them is a chore. Eye Rest is one you will keep, and you get 14 days of everything free before you decide. One payment of 14.99 dollars, no subscription.</p></details>
+  <details open><summary>Why pay when Stretchly is free?<span class="plus">+</span></summary><p class="a">Free break apps get uninstalled, because using them is a chore. Eye Rest is one you will keep, and you get 14 days of everything free before you decide. One payment of $14.99, no subscription.</p></details>
   <details><summary>Won't full-screen breaks wreck my focus?<span class="plus">+</span></summary><p class="a">They would, if they hit during a call or a video. They will not. Eye Rest pauses itself for meetings, playback, and idle time, and only runs during your office hours. You set the pace.</p></details>
   <details><summary>Doesn't f.lux already handle my eyes?<span class="plus">+</span></summary><p class="a">f.lux warms your screen color. It cannot make you look away, and looking away is the part that actually rests your eyes. Different job.</p></details>
   <details><summary>What do I need to run it?<span class="plus">+</span></summary><p class="a">macOS 14 or later. Eye Rest runs quietly in your menu bar, with no dock icon and no window. There is no iOS, Windows, or web version yet.</p></details>
