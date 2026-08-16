@@ -287,14 +287,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     function turnOff(){clearInterval(fade);if(aud)aud.pause();on=false;setIcon();}
     setIcon();
     if(btn)btn.addEventListener('click',function(){if(on){muted=true;turnOff();}else{muted=false;turnOn();}});
-    if(aud){
-      var pr=turnOn();
-      if(pr&&pr['catch'])pr['catch'](function(){
-        turnOff();
-        var unlock=function(e){if(e&&e.target&&btn&&btn.contains(e.target))return;document.removeEventListener('pointerdown',unlock);document.removeEventListener('keydown',unlock);document.removeEventListener('touchstart',unlock);if(!muted&&!on)turnOn();};
-        document.addEventListener('pointerdown',unlock);document.addEventListener('keydown',unlock);document.addEventListener('touchstart',unlock);
-      });
-    }
+    if(aud){var pr=turnOn();if(pr&&pr['catch'])pr['catch'](function(){turnOff();});}
   }catch(e){}
 })();
 </script>
