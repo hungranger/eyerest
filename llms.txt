@@ -20,6 +20,9 @@ Eye Rest reminds knowledge workers to rest their eyes on the 20-20-20 rule and t
 - [Eye Rest vs Time Out](https://hungranger.github.io/eyerest/eye-rest-vs-time-out.html): focused 20-20-20 + painterly scenes vs a highly configurable general break timer
 - [Founder story](https://hungranger.github.io/eyerest/story.html): why the maker quit every break app and painted one he'd actually keep
 
+## Free tools
+- [Free 20-20-20 timer (online)](https://hungranger.github.io/eyerest/timer.html): a no-install browser timer that reminds you to look away every 20 minutes; soft on-ramp to the Mac app
+
 ## Positioning
 - Beauty drives adherence: the break is a hand-painted scene you look forward to, not a pop-up you dismiss — so you actually take it.
 - Audience: Mac knowledge workers (developers, designers, writers, analysts) with digital eye strain who have uninstalled naggy break apps before.
