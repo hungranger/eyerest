@@ -5,23 +5,23 @@
 Eye Rest reminds knowledge workers to rest their eyes on the 20-20-20 rule and turns each break into a hand-painted scene they'll actually take. A gentle heads-up precedes every break, and any break can be skipped or snoozed, so it never ambushes you. Differentiator: beauty drives adherence — unlike utilitarian break apps (LookAway, Time Out, Stretchly) that get uninstalled.
 
 ## Key pages
-- [Home](https://hungranger.github.io/eyerest/): overview, the six scenes, pricing, FAQ
-- [Pricing](https://hungranger.github.io/eyerest/pricing.md): free tier + $14.99 one-time Pro, 14-day trial, up to 3 Macs
-- [Support](https://hungranger.github.io/eyerest/support.html)
-- [Privacy](https://hungranger.github.io/eyerest/privacy.html)
+- [Home](https://eyesrest.app/): overview, the six scenes, pricing, FAQ
+- [Pricing](https://eyesrest.app/pricing.md): free tier + $14.99 one-time Pro, 14-day trial, up to 3 Macs
+- [Support](https://eyesrest.app/support.html)
+- [Privacy](https://eyesrest.app/privacy.html)
 - [Download (always latest release)](https://github.com/hungranger/eyerest/releases/latest/download/EyeRest.dmg)
 
 ## Guides & comparisons
-- [The 20-20-20 rule: why you never actually keep it](https://hungranger.github.io/eyerest/20-20-20-rule.html): what the rule is, why adherence fails (willpower + naggy apps), and what makes a break stick
-- [Digital eye strain on a Mac](https://hungranger.github.io/eyerest/digital-eye-strain-mac.html): why long Mac sessions hurt your eyes (reduced blinking, fixed focus) and the 20-20-20 fix
-- [Best Mac eye-strain & break apps (2026)](https://hungranger.github.io/eyerest/best-mac-eye-strain-apps.html): honest buyer's guide ranking Eye Rest, LookAway, Stretchly, Time Out, f.lux
-- [Eye Rest vs LookAway](https://hungranger.github.io/eyerest/vs-lookaway.html): hand-painted break + flat $14.99 one-time vs highly configurable dimming + per-device tiers
-- [Eye Rest vs Stretchly](https://hungranger.github.io/eyerest/eye-rest-vs-stretchly.html): paid, Mac-native, hand-painted vs free, open-source, cross-platform
-- [Eye Rest vs Time Out](https://hungranger.github.io/eyerest/eye-rest-vs-time-out.html): focused 20-20-20 + painterly scenes vs a highly configurable general break timer
-- [Founder story](https://hungranger.github.io/eyerest/story.html): why the maker quit every break app and painted one he'd actually keep
+- [The 20-20-20 rule: why you never actually keep it](https://eyesrest.app/20-20-20-rule.html): what the rule is, why adherence fails (willpower + naggy apps), and what makes a break stick
+- [Digital eye strain on a Mac](https://eyesrest.app/digital-eye-strain-mac.html): why long Mac sessions hurt your eyes (reduced blinking, fixed focus) and the 20-20-20 fix
+- [Best Mac eye-strain & break apps (2026)](https://eyesrest.app/best-mac-eye-strain-apps.html): honest buyer's guide ranking Eye Rest, LookAway, Stretchly, Time Out, f.lux
+- [Eye Rest vs LookAway](https://eyesrest.app/vs-lookaway.html): hand-painted break + flat $14.99 one-time vs highly configurable dimming + per-device tiers
+- [Eye Rest vs Stretchly](https://eyesrest.app/eye-rest-vs-stretchly.html): paid, Mac-native, hand-painted vs free, open-source, cross-platform
+- [Eye Rest vs Time Out](https://eyesrest.app/eye-rest-vs-time-out.html): focused 20-20-20 + painterly scenes vs a highly configurable general break timer
+- [Founder story](https://eyesrest.app/story.html): why the maker quit every break app and painted one he'd actually keep
 
 ## Free tools
-- [Free 20-20-20 timer (online)](https://hungranger.github.io/eyerest/timer.html): a no-install browser timer that reminds you to look away every 20 minutes; soft on-ramp to the Mac app
+- [Free 20-20-20 timer (online)](https://eyesrest.app/timer.html): a no-install browser timer that reminds you to look away every 20 minutes; soft on-ramp to the Mac app
 
 ## Positioning
 - Beauty drives adherence: the break is a hand-painted scene you look forward to, not a pop-up you dismiss — so you actually take it.

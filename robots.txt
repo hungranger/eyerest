@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hungranger.github.io/eyerest/sitemap.xml
+Sitemap: https://eyesrest.app/sitemap.xml
