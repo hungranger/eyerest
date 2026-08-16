@@ -278,8 +278,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     var pick=sc[Math.floor(Math.random()*sc.length)];
     var hv=document.getElementById('heroVid');
     if(hv&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
-      hv.src='img/'+pick+'-loop-720.mp4';
-      var pv=hv.play();if(pv&&pv.catch)pv.catch(function(){});
+      hv.muted=true;hv.defaultMuted=true;hv.playsInline=true;
+      hv.setAttribute('muted','');hv.setAttribute('playsinline','');hv.setAttribute('webkit-playsinline','');
+      hv.src='img/'+pick+'-loop-720.mp4';hv.load();
+      var play=function(){var pv=hv.play();if(pv&&pv.catch)pv.catch(function(){})};
+      play();hv.addEventListener('loadeddata',play,{once:true});
     }
     var btn=document.getElementById('sndBtn'),aud=document.getElementById('heroAud');
     var on=false,muted=false,fade;
