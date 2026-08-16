@@ -98,6 +98,9 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .hero .lead{margin:1.4rem 0 2rem;max-width:36ch}
 .hero-art{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line-2);aspect-ratio:1/1;position:relative}
 .hero-art img,.hero-art video{width:100%;height:100%;object-fit:cover;display:block}
+.hero-art video{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.hero-art video.ready{opacity:1}
+@media (prefers-reduced-motion:reduce){.hero-art video{transition:none}}
 .snd{position:absolute;right:14px;bottom:14px;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(70,58,43,.42);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s var(--ease),transform .25s var(--ease)}
 .snd:hover{background:rgba(70,58,43,.72);transform:translateY(-1px)}
 .snd[aria-pressed="true"]{background:var(--terra);border-color:var(--terra)}
@@ -187,7 +190,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     </div>
     <p class="note">macOS 14+ . Free to start . Pro is $14.99 once, no subscription</p>
   </div>
-  <div class="hero-art"><video id="heroVid" width="1280" height="720" autoplay muted loop playsinline preload="auto" poster="img/hero-cozy-coast.jpg" aria-label="A hand-painted Eye Rest break scene, gently animated"></video><button id="sndBtn" class="snd" type="button" aria-pressed="false" aria-label="Play ambient sound"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><svg class="muted-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button><audio id="heroAud" loop preload="none"></audio></div>
+  <div class="hero-art"><img class="hero-poster" src="img/hero-cozy-coast.jpg" width="1280" height="720" alt="A hand-painted Eye Rest break scene"><video id="heroVid" width="1280" height="720" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="A hand-painted Eye Rest break scene, gently animated"></video><script>(function(){try{if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;var s=['meadow','night','dusk'][Math.floor(Math.random()*3)];window.heroScene=s;var v=document.getElementById('heroVid');v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.src='img/'+s+'-loop-720.mp4';}catch(e){}})();</script><button id="sndBtn" class="snd" type="button" aria-pressed="false" aria-label="Play ambient sound"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><svg class="muted-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button><audio id="heroAud" loop preload="none"></audio></div>
 </div></header>
 
 <section class="alt"><div class="wrap">
@@ -274,13 +277,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
   }catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')})}
   try{
-    var sc=['meadow','night','dusk'];
-    var pick=sc[Math.floor(Math.random()*sc.length)];
+    var pick=window.heroScene||['meadow','night','dusk'][Math.floor(Math.random()*3)];
     var hv=document.getElementById('heroVid');
-    if(hv&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
-      hv.muted=true;hv.defaultMuted=true;hv.playsInline=true;
-      hv.setAttribute('muted','');hv.setAttribute('playsinline','');hv.setAttribute('webkit-playsinline','');
-      hv.src='img/'+pick+'-loop-720.mp4';hv.load();
+    if(hv&&hv.getAttribute('src')){
+      var reveal=function(){hv.classList.add('ready')};
+      if(hv.readyState>=3)reveal();else hv.addEventListener('canplay',reveal,{once:true});
+      hv.addEventListener('playing',reveal,{once:true});
       var play=function(){var pv=hv.play();if(pv&&pv.catch)pv.catch(function(){})};
       play();hv.addEventListener('loadeddata',play,{once:true});
     }
