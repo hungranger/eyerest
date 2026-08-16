@@ -11,6 +11,15 @@ Eye Rest reminds knowledge workers to rest their eyes on the 20-20-20 rule and t
 - [Privacy](https://hungranger.github.io/eyerest/privacy.html)
 - [Download (always latest release)](https://github.com/hungranger/eyerest/releases/latest/download/EyeRest.dmg)
 
+## Guides & comparisons
+- [The 20-20-20 rule: why you never actually keep it](https://hungranger.github.io/eyerest/20-20-20-rule.html): what the rule is, why adherence fails (willpower + naggy apps), and what makes a break stick
+- [Digital eye strain on a Mac](https://hungranger.github.io/eyerest/digital-eye-strain-mac.html): why long Mac sessions hurt your eyes (reduced blinking, fixed focus) and the 20-20-20 fix
+- [Best Mac eye-strain & break apps (2026)](https://hungranger.github.io/eyerest/best-mac-eye-strain-apps.html): honest buyer's guide ranking Eye Rest, LookAway, Stretchly, Time Out, f.lux
+- [Eye Rest vs LookAway](https://hungranger.github.io/eyerest/vs-lookaway.html): hand-painted break + flat $14.99 one-time vs highly configurable dimming + per-device tiers
+- [Eye Rest vs Stretchly](https://hungranger.github.io/eyerest/eye-rest-vs-stretchly.html): paid, Mac-native, hand-painted vs free, open-source, cross-platform
+- [Eye Rest vs Time Out](https://hungranger.github.io/eyerest/eye-rest-vs-time-out.html): focused 20-20-20 + painterly scenes vs a highly configurable general break timer
+- [Founder story](https://hungranger.github.io/eyerest/story.html): why the maker quit every break app and painted one he'd actually keep
+
 ## Positioning
 - Beauty drives adherence: the break is a hand-painted scene you look forward to, not a pop-up you dismiss — so you actually take it.
 - Audience: Mac knowledge workers (developers, designers, writers, analysts) with digital eye strain who have uninstalled naggy break apps before.
