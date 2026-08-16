@@ -2,18 +2,17 @@
 
 > A calm, hand-painted macOS menu-bar app that enforces the 20-20-20 eye-rest rule with full-screen painterly break scenes. Free to start; Pro is a one-time $14.99 (no subscription), macOS 14+.
 
-Eye Rest reminds knowledge workers to rest their eyes on the 20-20-20 rule and turns each break into a hand-painted scene they'll actually take. Differentiator: beauty drives adherence — unlike utilitarian break apps (LookAway, Time Out, Stretchly) that get uninstalled.
+Eye Rest reminds knowledge workers to rest their eyes on the 20-20-20 rule and turns each break into a hand-painted scene they'll actually take. A gentle heads-up precedes every break, and any break can be skipped or snoozed, so it never ambushes you. Differentiator: beauty drives adherence — unlike utilitarian break apps (LookAway, Time Out, Stretchly) that get uninstalled.
 
-## Core
-- [Product](https://eyerest.app/okf/product.md): what Eye Rest is and does
-- [Features](https://eyerest.app/okf/features.md): timer, 6 scenes, smart pause, nudges, stats
-- [Pricing](https://eyerest.app/okf/pricing.md): free tier + $14.99 one-time Pro, 14-day trial
-- [FAQ](https://eyerest.app/okf/faq.md): common questions
+## Key pages
+- [Home](https://hungranger.github.io/eyerest/): overview, the six scenes, pricing, FAQ
+- [Pricing](https://hungranger.github.io/eyerest/pricing.md): free tier + $14.99 one-time Pro, 14-day trial, up to 3 Macs
+- [Support](https://hungranger.github.io/eyerest/support.html)
+- [Privacy](https://hungranger.github.io/eyerest/privacy.html)
+- [Download (always latest release)](https://github.com/hungranger/eyerest/releases/latest/download/EyeRest.dmg)
 
 ## Positioning
-- [Positioning](https://eyerest.app/okf/positioning.md): beauty drives adherence
-- [Audience](https://eyerest.app/okf/audience.md): Mac knowledge workers with eye strain
-- [Eye Rest vs alternatives](https://eyerest.app/okf/competitors.md): vs LookAway, Time Out, Stretchly, f.lux
-
-## Knowledge bundle
-- [OKF bundle index](https://eyerest.app/okf/index.md): full agent-readable content bundle
+- Beauty drives adherence: the break is a hand-painted scene you look forward to, not a pop-up you dismiss — so you actually take it.
+- Audience: Mac knowledge workers (developers, designers, writers, analysts) with digital eye strain who have uninstalled naggy break apps before.
+- vs alternatives: differs from LookAway, Time Out, and Stretchly on the hand-painted full-screen break scene and a flat one-time $14.99 (no per-device tiers, no subscription).
+- Free tier includes the pre-break heads-up and skip/snooze; Pro adds smart auto-pause (video calls, browser video, idle), all six scenes, office hours, and stats.
