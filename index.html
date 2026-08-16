@@ -96,8 +96,12 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
   min-height:calc(100dvh - 68px);padding-top:clamp(24px,4vw,40px);padding-bottom:clamp(40px,6vw,72px)}
 .hero h1{margin-bottom:.2em}
 .hero .lead{margin:1.4rem 0 2rem;max-width:36ch}
-.hero-art{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line-2);aspect-ratio:1/1}
+.hero-art{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line-2);aspect-ratio:1/1;position:relative}
 .hero-art img,.hero-art video{width:100%;height:100%;object-fit:cover;display:block}
+.snd{position:absolute;right:14px;bottom:14px;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(70,58,43,.42);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s var(--ease),transform .25s var(--ease)}
+.snd:hover{background:rgba(70,58,43,.72);transform:translateY(-1px)}
+.snd svg{width:20px;height:20px}
+.snd[aria-pressed="true"]{background:var(--terra);border-color:var(--terra)}
 .hero .note{font-size:.9rem;color:var(--faint);margin-top:1.1rem}
 @media (max-width:860px){
   .hero .wrap{grid-template-columns:1fr;min-height:0;text-align:center;padding-top:48px}
@@ -173,7 +177,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     </div>
     <p class="note">macOS 14+ . Free to start . Pro is $14.99 once, no subscription</p>
   </div>
-  <div class="hero-art"><video id="heroVid" width="1280" height="720" autoplay muted loop playsinline preload="auto" poster="img/hero-cozy-coast.jpg" aria-label="A hand-painted Eye Rest break scene, gently animated"></video></div>
+  <div class="hero-art"><video id="heroVid" width="1280" height="720" autoplay muted loop playsinline preload="auto" poster="img/hero-cozy-coast.jpg" aria-label="A hand-painted Eye Rest break scene, gently animated"></video><button id="sndBtn" class="snd" type="button" aria-pressed="false" aria-label="Play ambient sound"></button><audio id="heroAud" loop preload="none"></audio></div>
 </div></header>
 
 <section class="alt"><div class="wrap">
@@ -260,11 +264,32 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
   }catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')})}
   try{
+    var sc=['meadow','night','dusk'];
+    var pick=sc[Math.floor(Math.random()*sc.length)];
     var hv=document.getElementById('heroVid');
     if(hv&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
-      var sc=['meadow','night','dusk'];
-      hv.src='img/'+sc[Math.floor(Math.random()*sc.length)]+'-loop-720.mp4';
-      var p=hv.play();if(p&&p.catch)p.catch(function(){});
+      hv.src='img/'+pick+'-loop-720.mp4';
+      var pv=hv.play();if(pv&&pv.catch)pv.catch(function(){});
+    }
+    var btn=document.getElementById('sndBtn'),aud=document.getElementById('heroAud');
+    var OFF='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>';
+    var ON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.8 5.2a9 9 0 0 1 0 13.6"/></svg>';
+    if(btn)btn.innerHTML=OFF;
+    if(btn&&aud){
+      var on=false,fade;
+      btn.addEventListener('click',function(){
+        on=!on;
+        if(on){
+          if(!aud.getAttribute('src'))aud.setAttribute('src','audio/'+pick+'.mp3');
+          aud.loop=true;aud.volume=0;
+          var pr=aud.play();if(pr&&pr.catch)pr.catch(function(){});
+          clearInterval(fade);var v=0;fade=setInterval(function(){v=Math.min(0.8,v+0.05);aud.volume=v;if(v>=0.8)clearInterval(fade)},70);
+          btn.innerHTML=ON;btn.setAttribute('aria-pressed','true');btn.setAttribute('aria-label','Mute ambient sound');
+        }else{
+          clearInterval(fade);aud.pause();
+          btn.innerHTML=OFF;btn.setAttribute('aria-pressed','false');btn.setAttribute('aria-label','Play ambient sound');
+        }
+      });
     }
   }catch(e){}
 })();
