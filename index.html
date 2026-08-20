@@ -154,6 +154,18 @@ html.js .reveal.in{opacity:1;transform:none}
 .offer{text-align:center;margin:1.6rem auto 0;max-width:44ch;color:var(--ink-soft)}
 .offer b{color:var(--terra-2)}
 @media (max-width:560px){.plans{grid-template-columns:1fr}}
+/* launch offer highlight */
+.plan.pro{position:relative;overflow:visible}
+.launch-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;
+  background:var(--terra);color:#fff;font-family:var(--sans);font-weight:700;font-size:.7rem;
+  letter-spacing:.09em;text-transform:uppercase;padding:.42rem .95rem;border-radius:100px;
+  box-shadow:0 12px 22px -10px rgba(182,95,55,.75)}
+.offer.hot{background:color-mix(in srgb,var(--terra) 8%,var(--card));border:1.5px solid var(--terra);
+  border-radius:16px;padding:1rem 1.4rem;color:var(--ink)}
+.hero-offer{display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;font-weight:600;
+  color:var(--terra-2);background:color-mix(in srgb,var(--terra) 12%,transparent);
+  border:1px solid var(--line-2);padding:.5rem 1rem;border-radius:100px;margin:.2rem 0 0}
+.hero-offer::before{content:"✦";color:var(--gold)}
 /* faq */
 .faq{max-width:720px;margin:0 auto}
 details{border-bottom:1px solid var(--line-2);padding:16px 2px}
@@ -199,7 +211,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
 <a class="btn ghost" href="#main" style="position:absolute;left:-9999px;top:8px" onfocus="this.style.left='16px'">Skip to content</a>
 <nav><div class="wrap">
   <a class="brand" href="#top"><span class="orb" aria-hidden="true"></span> Eye Rest</a>
-  <a class="btn primary" href="#get">Download</a>
+  <a class="btn primary" href="https://github.com/hungranger/eyerest/releases/latest/download/EyeRest.dmg" target="_blank" rel="noopener">Download</a>
 </div></nav>
 
 <main id="main">
@@ -213,6 +225,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
       <a class="btn ghost big" href="https://royvu.lemonsqueezy.com/checkout/buy/39a3e919-e7ea-41ea-aaf4-1cf986cefa77" target="_blank" rel="noopener">Get Pro — $14.99, 3 Macs</a>
     </div>
     <p class="note">macOS 14+ . Free to start . Pro is $14.99 once, no subscription</p>
+    <p class="hero-offer">Launch offer — one license runs on up to <b>&nbsp;3 Macs</b>&nbsp;. Limited time.</p>
   </div>
   <div class="hero-art"><video id="heroVid" width="1280" height="720" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="A hand-painted Eye Rest break scene, gently animated"></video><img class="hero-poster" src="img/meadow-loop-poster.jpg" width="1280" height="720" alt="An Eye Rest break: a hand-painted scene with the rest timer"><script>(function(){try{if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;var s=['meadow','night','dusk'][Math.floor(Math.random()*3)];window.heroScene=s;var p=document.querySelector('.hero-poster');if(p)p.src='img/'+s+'-loop-poster.jpg';var v=document.getElementById('heroVid');v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.src='img/'+s+'-loop-720.mp4';}catch(e){}})();</script><button id="sndBtn" class="snd" type="button" aria-pressed="false" aria-label="Play ambient sound"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><svg class="muted-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button><audio id="heroAud" loop preload="none"></audio></div>
 </div></header>
@@ -256,10 +269,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   <div class="plans reveal">
     <div class="plan"><p class="tag">Free</p><div class="amt">Free</div>
       <ul><li><b>20-20-20 menu-bar timer</b></li><li>Full-screen breaks</li><li>One time-of-day scene</li></ul></div>
-    <div class="plan pro"><p class="tag">Pro</p><div class="amt">$14.99 <span style="font-size:1rem;color:var(--ink-soft)">once</span></div>
+    <div class="plan pro"><span class="launch-badge">Launch offer · 3 Macs</span><p class="tag">Pro</p><div class="amt">$14.99 <span style="font-size:1rem;color:var(--ink-soft)">once</span></div>
       <ul><li><b>All six scenes</b> and picker</li><li>Living animation</li><li>Smart pause, idle pause, and office hours</li><li>Blink and posture nudges</li><li>Stats and streaks</li><li><b>Up to 3 Macs</b> per license (limited time)</li></ul></div>
   </div>
-  <p class="offer"><b>Launch offer:</b> one license unlocks Pro on up to 3 Macs, limited time. 14-day full trial. Buy once, own it.</p>
+  <p class="offer hot"><b>Launch offer:</b> one license unlocks Pro on <b>up to 3 Macs</b> — limited time. 14-day full trial. Buy once, own it.</p>
   <div class="cta-row center" style="justify-content:center;margin-top:1.8rem">
     <a class="btn primary big" href="https://github.com/hungranger/eyerest/releases/latest/download/EyeRest.dmg" target="_blank" rel="noopener">Download for Mac</a>
     <a class="btn ghost big" href="https://royvu.lemonsqueezy.com/checkout/buy/39a3e919-e7ea-41ea-aaf4-1cf986cefa77" target="_blank" rel="noopener">Get Pro — $14.99, 3 Macs</a>
