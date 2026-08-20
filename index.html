@@ -210,7 +210,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     <p class="lead">Every twenty minutes, your Mac becomes a hand-painted scene. Rest your eyes, gladly.</p>
     <div class="cta-row">
       <a class="btn primary big" href="https://github.com/hungranger/eyerest/releases/latest/download/EyeRest.dmg" target="_blank" rel="noopener">Download for Mac</a>
-      <button class="btn ghost big" type="button" data-waitlist>Get the 3-Mac early-bird offer</button>
+      <a class="btn ghost big" href="https://royvu.lemonsqueezy.com/checkout/buy/39a3e919-e7ea-41ea-aaf4-1cf986cefa77" target="_blank" rel="noopener">Get Pro — $14.99, 3 Macs</a>
     </div>
     <p class="note">macOS 14+ . Free to start . Pro is $14.99 once, no subscription</p>
   </div>
@@ -262,7 +262,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   <p class="offer"><b>Launch offer:</b> one license unlocks Pro on up to 3 Macs, limited time. 14-day full trial. Buy once, own it.</p>
   <div class="cta-row center" style="justify-content:center;margin-top:1.8rem">
     <a class="btn primary big" href="https://github.com/hungranger/eyerest/releases/latest/download/EyeRest.dmg" target="_blank" rel="noopener">Download for Mac</a>
-    <button class="btn ghost big" type="button" data-waitlist>Get the 3-Mac early-bird offer</button>
+    <a class="btn ghost big" href="https://royvu.lemonsqueezy.com/checkout/buy/39a3e919-e7ea-41ea-aaf4-1cf986cefa77" target="_blank" rel="noopener">Get Pro — $14.99, 3 Macs</a>
   </div>
 </div></section>
 
@@ -281,49 +281,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   <p class="lead" style="margin:1rem auto 2rem;max-width:40ch">Your next break is twenty minutes away. Make it a good one.</p>
   <div class="cta-row" style="justify-content:center">
     <a class="btn primary big" href="https://github.com/hungranger/eyerest/releases/latest/download/EyeRest.dmg" target="_blank" rel="noopener">Download for Mac</a>
-    <button class="btn ghost big" type="button" data-waitlist>Get the 3-Mac early-bird offer</button>
+    <a class="btn ghost big" href="https://royvu.lemonsqueezy.com/checkout/buy/39a3e919-e7ea-41ea-aaf4-1cf986cefa77" target="_blank" rel="noopener">Get Pro — $14.99, 3 Macs</a>
   </div>
   <p class="note" style="color:var(--faint);margin-top:1.1rem">Free to start . 14-day trial . $14.99 once . macOS 14+</p>
 </div></section>
 
-<!-- early-bird waitlist popup -->
-<div class="wl-modal" id="waitlist" hidden>
-  <div class="wl-backdrop" data-close></div>
-  <div class="wl-dialog" role="dialog" aria-modal="true" aria-labelledby="wl-title">
-    <button class="wl-x" type="button" data-close aria-label="Close">&times;</button>
-    <span class="eyebrow">Early-bird launch offer</span>
-    <h2 id="wl-title">Get the 3-Mac offer.</h2>
-    <p>Eye Rest Pro opens soon. Join the early-bird list and lock in the launch deal:</p>
-    <ul class="wl-list">
-      <li><b>One license, up to 3 Macs</b> &mdash; limited-time launch offer</li>
-      <li>All six hand-painted scenes, smart pause, stats &amp; streaks</li>
-      <li><b>$14.99 once</b> &mdash; no subscription, 14-day full trial</li>
-    </ul>
-    <form class="waitlist" action="https://eyesrest.app/api/waitlist" method="post" novalidate aria-label="Early-bird waitlist">
-      <input type="email" name="email" required autocomplete="email" placeholder="you@email.com" aria-label="Your email">
-      <button class="btn primary big" type="submit">Email me the early-bird code</button>
-    </form>
-    <p class="wl-msg" role="status" aria-live="polite" hidden></p>
-    <p class="wl-fine">No spam &mdash; one email the day Pro opens, then you decide. Free to start meanwhile.</p>
-  </div>
-</div>
-<script>(function(){
-  var m=document.getElementById('waitlist');if(!m)return;
-  var f=m.querySelector('.waitlist'),msg=m.querySelector('.wl-msg'),inp=f.querySelector('input[name=email]');
-  function open(){m.hidden=false;document.body.style.overflow='hidden';setTimeout(function(){inp.focus();},60);}
-  function close(){m.hidden=true;document.body.style.overflow='';}
-  document.querySelectorAll('[data-waitlist]').forEach(function(b){b.addEventListener('click',open);});
-  m.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',close);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)close();});
-  f.addEventListener('submit',function(e){e.preventDefault();var email=(inp.value||'').trim();
-    if(!email||!inp.checkValidity()){inp.focus();return;}
-    if(f.getAttribute('action').indexOf('EMAIL_FORM_ENDPOINT')>-1){show('Almost ready — the early-bird list opens shortly.');return;}
-    var b=f.querySelector('button');b.disabled=true;b.textContent='Adding you…';
-    fetch(f.getAttribute('action'),{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'email='+encodeURIComponent(email)}).then(ok).catch(ok);
-    function ok(){f.style.display='none';show('You’re on the early-bird list ✓ Watch your inbox for the 3-Mac code.');}
-  });
-  function show(t){if(msg){msg.hidden=false;msg.textContent=t;}}
-})();</script>
 </main>
 
 <footer><div class="wrap">
