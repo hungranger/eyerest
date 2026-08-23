@@ -89,14 +89,21 @@ function decodeGift(code){
 // scene -> warm accent tint
 var TINT={meadow:"#8a9a4b",coast:"#3f8fa0",forest:"#4f7a4a",dusk:"#c98a4b",night:"#6a6bb0",rain:"#5f7c94"};
 
-var raw=(location.hash||"").replace(/^#/,"");
-if(raw){
+// Fragment = "<code>" or "<code>~<url-encoded note>". Note is presentation-only,
+// lives in the link suffix (never in the redeem code the app parses).
+var frag=(location.hash||"").replace(/^#/,"");
+var tilde=frag.indexOf("~");
+var codePart = tilde<0 ? frag : frag.slice(0,tilde);
+var suffixNote;
+if(tilde>=0){ try{ suffixNote=decodeURIComponent(frag.slice(tilde+1)); }catch(_){ suffixNote=frag.slice(tilde+1); } }
+if(codePart){
   try{
-    var g=decodeGift(raw);
+    var g=decodeGift(codePart);
+    var note = (suffixNote!=null && suffixNote!=="") ? suffixNote : g.n; // suffix wins; legacy baked note as fallback
     if(TINT[g.s]) document.documentElement.style.setProperty("--accent",TINT[g.s]);
-    if(g.n){ var n=document.getElementById("note"); n.textContent="“"+g.n+"”"; n.hidden=false; document.getElementById("kick").textContent="A note from a friend"; }
+    if(note){ var n=document.getElementById("note"); n.textContent="“"+note+"”"; n.hidden=false; document.getElementById("kick").textContent="A note from a friend"; }
     var open=document.getElementById("open");
-    open.href="eyesrest://gift/"+raw; open.hidden=false;   // installed users deep-link straight in
+    open.href="eyesrest://gift/"+codePart; open.hidden=false;   // deep link = bare code, no note
   }catch(e){
     document.getElementById("egg").textContent="🐣";
     document.getElementById("title").textContent="This gift link looks incomplete";
