@@ -58,7 +58,9 @@
   </main>
 
 <script>
-// base32 (RFC4648, no pad) -> gift payload {v,c,s,n?}. Mirrors Eye's encoder.
+// Wire v2: base32(RFC4648,no-pad) of "v|c|s|note?". Mirrors Eye's encoder.
+// c=creature index 0-29, s=scene index 0-5; note is last field, may contain '|'.
+// Page needs only scene (tint) + note, so it range-checks c but doesn't map its name (no spoiler).
 function decodeGift(code){
   var A="ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
   var clean=(code||"").trim().toUpperCase().replace(/=+$/,"");
@@ -66,14 +68,21 @@ function decodeGift(code){
   var bits="",bytes=[],i;
   for(i=0;i<clean.length;i++) bits+=A.indexOf(clean[i]).toString(2).padStart(5,"0");
   for(i=0;i+8<=bits.length;i+=8) bytes.push(parseInt(bits.slice(i,i+8),2));
-  var o=JSON.parse(new TextDecoder().decode(new Uint8Array(bytes)));
-  if(o.v!==1) throw new Error("bad version");
-  return o;
+  var str=new TextDecoder().decode(new Uint8Array(bytes));
+  var p1=str.indexOf("|"),p2=str.indexOf("|",p1+1),p3=str.indexOf("|",p2+1); // split first 3 pipes only
+  if(p1<0||p2<0) throw new Error("bad format");
+  var v=str.slice(0,p1),c=str.slice(p1+1,p2),s,note;
+  if(p3<0){ s=str.slice(p2+1); note=undefined; } else { s=str.slice(p2+1,p3); note=str.slice(p3+1); }
+  if(v!=="2") throw new Error("bad version");
+  if(!/^\d+$/.test(c)||!/^\d+$/.test(s)) throw new Error("bad index");
+  var ci=+c,si=+s,SCENES=["meadow","coast","forest","dusk","night","rain"];
+  if(!(ci>=0&&ci<30)) throw new Error("bad creature");     // reject, never clamp (matches app)
+  if(!(si>=0&&si<SCENES.length)) throw new Error("bad scene");
+  return {v:2,c:ci,s:SCENES[si],n:note};   // s = scene name for tint
 }
-// self-check against Eye's canonical vector — fails loud in console if decode drifts.
+// self-check against Eye's canonical v2 vector — fails loud in console if decode drifts.
 (function(){
-  var V="PMRHMIR2GEWCEYZCHIRG2ZLBMRXXOX3MMFWWEIRMEJZSEORCNVSWCZDPO4RCYITOEI5CE2DBORRWQIDUNBUXGIDXNF2GQIDNMURH2";
-  try{ var g=decodeGift(V); console.assert(g.c==="meadow_lamb"&&g.s==="meadow"&&g.n==="hatch this with me","gift decoder self-check FAILED",g); }
+  try{ var g=decodeGift("GJ6DM7BRPRUGC5DDNAQHI2DJOMQHO2LUNAQG2ZI"); console.assert(g.c===6&&g.s==="coast"&&g.n==="hatch this with me","gift decoder self-check FAILED",g); }
   catch(e){ console.error("gift decoder self-check threw",e); }
 })();
 
